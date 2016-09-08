@@ -100,16 +100,26 @@ This file contains a number of front-end interview questions that can be used wh
 * ans: https://neal.codes/blog/front-end-interview-css-questions/
 #### JS Questions:
 
-* Explain event delegation
-* Explain how `this` works in JavaScript
-* Explain how prototypal inheritance works
+* Explain event delegation  
+  Event delegation allows us to attach a single event listener, to a parent element, that will fire for all descendants matching a selector, whether those descendants exist now or are added in the future.
+* Explain how `this` works in JavaScript  
+  The ECMAScript Standard defines this as a keyword that "evaluates to the value of the ThisBinding of the current execution context" (§11.1.1). ThisBinding is something that the JavaScript interpreter maintains as it evaluates JavaScript code, like a special CPU register which holds a reference to an object.
+* Explain how prototypal inheritance works  
+  A prototype is an internal object from which other objects inherit properties. Its main purpose is to allow multiple instances of an object to share a common property. Thus, object properties which are defined using the prototype object are inherited by all instances which reference it.
 * What do you think of AMD vs CommonJS?
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
+  (function () { … })();  
+  !function () { … }();  
+  ~function () { … }();  
+  -function () { … }();  
+  +function () { … }();  
 * What's the difference between a variable that is: `null`, `undefined` or undeclared?
   * How would you go about checking for any of these states?
-* What is a closure, and how/why would you use one?
-* What's a typical use case for anonymous functions?
+* What is a closure, and how/why would you use one?  
+  https://medium.com/@rlynjb/js-interview-question-what-is-a-closure-and-how-why-would-you-use-one-b6fd45ea95f6#.b1n1lwbf1
+* What's a typical use case for anonymous functions?  
+  http://helephant.com/2008/08/23/javascript-anonymous-functions/
 * How do you organize your code? (module pattern, classical inheritance?)
 * What's the difference between host objects and native objects?
 * Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
