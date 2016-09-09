@@ -175,16 +175,16 @@ This file contains a number of front-end interview questions that can be used wh
   * If so, what libraries have you used?
     As soon as we find ourselves including HTML inside JavaScript strings we should be starting to think about what benefits JavaScript templates could give us.  
     https://www.sitepoint.com/overview-javascript-templating-engines/
-* Explain "hoisting".
+* Explain "hoisting".  
   Hoisting is when a JS declaration is lifted (“hoisted”) to the top of it’s scope by the JS interpreter. What this really means is that a variable or function isn’t necessarily declared where you think it is.  
-  Hoisting variables 
-  *** 
+  Hoisting variables  
+  ``` 
   function containsHoisting() {
       console.log(hoistedVariable);
       var hoistedVariable = "I was hoisted!";
   }
   containsHoisting(); // logs undefined
-  ***
+  ```
 / Hoisting functions
 * Describe event bubbling.
 * What's the difference between an "attribute" and a "property"?
