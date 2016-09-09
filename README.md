@@ -171,9 +171,21 @@ This file contains a number of front-end interview questions that can be used wh
   http://stackoverflow.com/questions/5943630/basic-example-of-using-ajax-with-jsonp
   JSONP create a `script` tag with src and send to server the url with `call_back` parameter, such that the server will return `call_back` with responsed data (as params), meaning the `call_back` will executed automatically.
 
-* Have you ever used JavaScript templating?
+* Have you ever used JavaScript templating? 
   * If so, what libraries have you used?
+    As soon as we find ourselves including HTML inside JavaScript strings we should be starting to think about what benefits JavaScript templates could give us.  
+    https://www.sitepoint.com/overview-javascript-templating-engines/
 * Explain "hoisting".
+  Hoisting is when a JS declaration is lifted (“hoisted”) to the top of it’s scope by the JS interpreter. What this really means is that a variable or function isn’t necessarily declared where you think it is.  
+  Hoisting variables 
+  *** 
+  function containsHoisting() {
+      console.log(hoistedVariable);
+      var hoistedVariable = "I was hoisted!";
+  }
+  containsHoisting(); // logs undefined
+  ***
+/ Hoisting functions
 * Describe event bubbling.
 * What's the difference between an "attribute" and a "property"?
 * Why is extending built-in JavaScript objects not a good idea?
