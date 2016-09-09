@@ -308,8 +308,39 @@ Here are a few of the other benefits of using a javascript framework to produce 
   1. As previously mentioned, a front-end framework distributes the processing work across multiple client computers.
   2. A front-end framework is extensible. Provided that you build your API in a RESTful way (which most frameworks encourage you to do), you can easily swap out server-side technologies with little front end changes. You could easily prototype your application using a technology like Firebase or Parse, and then migrate to a hosted solution when cost becomes prohibitive.
   3. A front-end framework can easily be turned into a mobile application. Technologies like Phonegap and Cordova make it remarkably easy to transform HTML, CSS, and Javascript into a hybrid native application.
+  
+  how to make one SEO-friendly?  https://www.getambassador.com/blog/single-page-webapp-seo
+  * Optimizing Single Page Apps for SEO: Pretty URLs
+  * Optimizing Single Page Apps for SEO: Cache Rules Everything Around Me
+  * Optimizing Single Page Apps for SEO: sitemap.xml & GMT
 
 * What is the extent of your experience with Promises and/or their polyfills?
+What is a promise?  
+A promise is a proxy for a value not necessarily known at its creation time. With promises, rather than an asynchronous call accepting a callback, it instead returns a promise. The calling code can then wait until that promise is fulfilled before executing the next step. To do so, the promise has a method named then, which accepts a function that will be invoked when the promise has been fulfilled. 
+
+```javascript
+// without promise
+function isUserTooYoung(id, callback) {
+    openDatabase(function(db) {
+      getCollection(db, 'users', function(col) {
+        find(col, {'id': id},function(result) {
+          result.filter(function(user) {
+            callback(user.age < cutoffAge)
+          })
+        })
+      })
+    })
+}
+// with promise
+function isUserTooYoung(id) {
+    return openDatabase(db)
+      .then(getCollection)
+      .then(find.bind(null, {'id': id}))
+      .then(function(user) {
+          return user.age < cutoffAge;
+    });
+}
+```
 * What are the pros and cons of using Promises instead of callbacks?
 * What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
 * What tools and techniques do you use debugging JavaScript code?
