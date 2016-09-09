@@ -288,15 +288,27 @@ http://lucybain.com/blog/2014/js-use-strict/
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
 ```javascript
 for(var i = 1; i <= 100; ++i) {
-  if (i%15 == 0) console.log('fizzbuzz');
-  else if (i%3 == 0) console.log('fizz');
-  else if (i%5 == 0) console.log('buzz');
+  console.log(!(i%15) ? 'fizzbuzz '+i : !(i%3) ? 'fizz '+i : !(i%5) ? 'buzz '+i : '');
 }
 ```
 
-* Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
+* Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?  
+http://lucybain.com/blog/2014/js-dont-touch-global-scope/  
+  1. It’s harder to read the code and reason about it when variables seem to appear out of thin air (but really from the global scope).
+  2. Anyone can update a global variable from any point in the program at any time (and from any thread if there’s more than one going).
+  3. General code smell - if you're too lazy to put the variable only where it needs to be then what other corners are you cutting?
+  4. It’s probable that you'll encounter global variable name clashes. Since there’s only one namespace you're more likely to double up on a variable name.
 * Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
-* Explain what a single page app is and how to make one SEO-friendly.
+The load event fires at the end of the document loading process. At this point, all of the objects in the document are in the DOM, and all the images and sub-frames have finished loading.  
+
+* Explain what a single page app is and how to make one SEO-friendly.  
+Single-Page Applications (SPAs) are Web apps that load a single HTML page and dynamically update that page as the user interacts with the app. SPAs use AJAX and HTML5 to create fluid and responsive Web apps, without constant page reloads. However, this means much of the work happens on the client side, in JavaScript.
+
+Here are a few of the other benefits of using a javascript framework to produce a single-page web application:  
+  1. As previously mentioned, a front-end framework distributes the processing work across multiple client computers.
+  2. A front-end framework is extensible. Provided that you build your API in a RESTful way (which most frameworks encourage you to do), you can easily swap out server-side technologies with little front end changes. You could easily prototype your application using a technology like Firebase or Parse, and then migrate to a hosted solution when cost becomes prohibitive.
+  3. A front-end framework can easily be turned into a mobile application. Technologies like Phonegap and Cordova make it remarkably easy to transform HTML, CSS, and Javascript into a hybrid native application.
+
 * What is the extent of your experience with Promises and/or their polyfills?
 * What are the pros and cons of using Promises instead of callbacks?
 * What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
