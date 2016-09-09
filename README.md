@@ -175,17 +175,90 @@ This file contains a number of front-end interview questions that can be used wh
   * If so, what libraries have you used?
     As soon as we find ourselves including HTML inside JavaScript strings we should be starting to think about what benefits JavaScript templates could give us.  
     https://www.sitepoint.com/overview-javascript-templating-engines/
-* Explain "hoisting".  
-  Hoisting is when a JS declaration is lifted (“hoisted”) to the top of it’s scope by the JS interpreter. What this really means is that a variable or function isn’t necessarily declared where you think it is.  
-  Hoisting variables  
-  ``` 
+* Explain "hoisting".
+  Hoisting is when a JS declaration is lifted (“hoisted”) to the top of it’s scope by the JS interpreter. What this really means is that a variable or function isn’t necessarily declared where you think it is.http://lucybain.com/blog/2014/hoisting/    
+  1. Hoisting variables 
+
+  ```javascript
   function containsHoisting() {
       console.log(hoistedVariable);
       var hoistedVariable = "I was hoisted!";
   }
   containsHoisting(); // logs undefined
+  // What the interpreter changed it to:
+  function containsHoisting() {
+      var hoistedVariable; // <-- this line here!
+      console.log(hoistedVariable);
+      hoistedVariable = "I was hoisted!";
+  }
   ```
-/ Hoisting functions
+  ```javascript
+  var hoistedVariable = 1;
+  function scopingFunction() {
+      if (!hoistedVariable) {
+          var hoistedVariable = 10;
+      }
+      return hoistedVariable;
+  }
+  scopingFunction(); // returns 10
+  // reason: In Javascript scopes are defined at function level. Many other languages define scope at a block level (as in an if block or for loop). This is an important difference to remember.
+  var hoistedVariable = 1;
+  function scopingFunction() {
+      var hoistedVariable; // <-- this line here!
+      if (!hoistedVariable) {
+          hoistedVariable = 10;
+      }
+      return hoistedVariable;
+  }
+  scopingFunction(); // returns 10
+  ```  
+  2. Hoisting functions  
+
+  ```javascript
+  function containingFunction() {
+    var hoistedVariable = 2 + 2;
+    function hoistedFunction() {
+        return hoistedVariable;
+    }
+    return hoistedFunction();
+  }
+  containingFunction() // returns 4
+  // js interpretor
+  function containingFunction() {
+    // this is the hoisted section
+    var hoistedVariable;
+    function hoistedFunction() {
+        return hoistedVariable;
+    }
+
+    // here's the rest of the code
+    hoistedVariable = 2 + 2;
+    return hoistedFunction();
+  }
+  containingFunction() // returns 4
+  ```
+  ```javascript
+  function containingFunction() {
+    var hoisted = "I'm the variable";
+    function hoisted() {
+        return "I'm the function";
+    }
+    return hoisted(); // results in a TypeError
+  }
+  containingFunction()
+  // js interpretor re-writes
+  function containingFunction() {
+    // hoisted section
+    var hoisted;
+    function hoisted() {
+        return "I'm the function";
+    }
+    // rest of the code
+    hoisted = "I'm the variable";
+    return hoisted();
+  }
+  containingFunction() // results in a TypeError
+  ```
 * Describe event bubbling.
 * What's the difference between an "attribute" and a "property"?
 * Why is extending built-in JavaScript objects not a good idea?
