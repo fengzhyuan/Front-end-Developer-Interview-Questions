@@ -102,10 +102,13 @@ This file contains a number of front-end interview questions that can be used wh
 
 * Explain event delegation  
   Event delegation allows us to attach a single event listener, to a parent element, that will fire for all descendants matching a selector, whether those descendants exist now or are added in the future.
+
 * Explain how `this` works in JavaScript  
   The ECMAScript Standard defines this as a keyword that "evaluates to the value of the ThisBinding of the current execution context" (§11.1.1). ThisBinding is something that the JavaScript interpreter maintains as it evaluates JavaScript code, like a special CPU register which holds a reference to an object.
+
 * Explain how prototypal inheritance works  
   A prototype is an internal object from which other objects inherit properties. Its main purpose is to allow multiple instances of an object to share a common property. Thus, object properties which are defined using the prototype object are inherited by all instances which reference it.
+
 * What do you think of AMD vs CommonJS?
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
@@ -114,20 +117,52 @@ This file contains a number of front-end interview questions that can be used wh
   ~function () { … }();  
   -function () { … }();  
   +function () { … }();  
+
 * What's the difference between a variable that is: `null`, `undefined` or undeclared?
   * How would you go about checking for any of these states?
 * What is a closure, and how/why would you use one?  
   https://medium.com/@rlynjb/js-interview-question-what-is-a-closure-and-how-why-would-you-use-one-b6fd45ea95f6#.b1n1lwbf1
+
 * What's a typical use case for anonymous functions?  
   http://helephant.com/2008/08/23/javascript-anonymous-functions/
+
 * How do you organize your code? (module pattern, classical inheritance?)
-* What's the difference between host objects and native objects?
+* What's the difference between host objects and native objects?  
+  http://stackoverflow.com/questions/7614317/what-is-the-difference-between-native-objects-and-host-objects
+
 * Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
+  function declaration, function expression; instance of class `Person`
+
 * What's the difference between `.call` and `.apply`?
+  http://stackoverflow.com/questions/1986896/what-is-the-difference-between-call-and-apply  
+  The difference is that apply lets you invoke the function with arguments as an array; call requires the parameters be listed explicitly. A useful mnemonic is "A for array and C for comma."  
+  theFunction.apply(valueForThis, arrayOfArgs)  
+  theFunction.call(valueForThis, arg1, arg2, ...)  
+
 * Explain `Function.prototype.bind`.
+  bind allows you to set which object is treated as this within the function call.
+
 * When would you use `document.write()`?
+  document.write() shouldn’t be used after the page has loaded to change the content as it will overwrite the entire page; when to use: when working with 3rd party libs, such as executing a script code segment will block page loading / executing, with doc.write can work in acync way
+
 * What's the difference between feature detection, feature inference, and using the UA string?
+  When you check if a certain feature exists, that’s feature detection. When you make an assumption that because one feature is present (or not) another one will also be present (or not): feature inference.
+
 * Explain Ajax in as much detail as possible.
+  AJAX is an acronym standing for `Asynchronous JavaScript and XML` and this technology help us to load data from the server without a browser page refresh.  
+  AJAX stands for Asynchronous JavaScript and XML. In a nutshell, it is the use of the XMLHttpRequest object to communicate with server-side scripts. It can send as well as receive information in a variety of formats, including JSON, XML, HTML, and even text files. AJAX’s most appealing characteristic, however, is its "asynchronous" nature, which means it can do all of this without having to refresh the page. This lets you update portions of a page based upon user events.  
+  * Step 1 – How to make an HTTP request  
+    1. an instance of class that provide this functionality. IE:XMLHTTP; Mozilla, Safari and other browsers:   XMLHttpRequest. 
+    2. decide what you want to do after you receive the server response to your request. define: httpRequest.onreadystatechange = nameOfTheFunction;
+    3. make the request. call `open()` and `send()`. httpRequest.open('GET', 'http://www.example.org/some.file', true);
+      httpRequest.send(null);
+  * Step 2 – Handling the server response
+    1. check state of the request. XMLHttpRequest.DONE. 0 (uninitialized); 1 (loading); 2 (loaded); 3 (interactive); 4 (complete)
+    2. check the response code of the HTTP server response. `200 OK`
+    3. two options to deal with response data:
+      * httpRequest.responseText – returns the server response as a string of text
+      * httpRequest.responseXML – returns the response as an XMLDocument object you can traverse using the JavaScript DOM functions
+
 * What are the advantages and disadvantages of using Ajax?
 * Explain how JSONP works (and how it's not really Ajax).
 * Have you ever used JavaScript templating?
