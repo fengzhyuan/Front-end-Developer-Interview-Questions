@@ -260,18 +260,40 @@ This file contains a number of front-end interview questions that can be used wh
   containingFunction() // results in a TypeError
   ```
 * Describe event bubbling.
-* What's the difference between an "attribute" and a "property"?
+  http://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing  
+  Event bubbling and capturing are two ways of event propagation in the HTML DOM API, when an event occurs in an element inside another element, and both elements have registered a handle for that event. The event propagation mode determines in which order the elements receive the event.
+  
+* What's the difference between an "attribute" and a "property"? http://lucybain.com/blog/2014/attribute-vs-property/  
+  JS DOM objects have properties. Attributes are in the HTML itself, rather than in the DOM. when handling `read-only` fields, prefer `attribute`, retrieving `attr` after updating will still get default value if they have.
 * Why is extending built-in JavaScript objects not a good idea?
-* Difference between document load event and document DOMContentLoaded event?
+  http://lucybain.com/blog/2014/js-extending-built-in-objects/
+
+* Difference between document load event and document DOMContentLoaded event?  
+  The DOMContentLoaded event will fire as soon as the DOM hierarchy has been fully constructed, the load event will do it when all the images and sub-frames have finished loading.
 * What is the difference between `==` and `===`?
-* Explain the same-origin policy with regards to JavaScript.
+* Explain the same-origin policy with regards to JavaScript.  
+  The same-origin policy restricts how a document or script loaded from one origin can interact with a resource from another origin. It is a critical security mechanism for isolating potentially malicious documents.
 * Make this work:
 ```javascript
 duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
+function duplicate(arr) {
+  return Array.isArray(arr) && arr.concat(arr);
+}
 ```
-* Why is it called a Ternary expression, what does the word "Ternary" indicate?
-* What is `"use strict";`? what are the advantages and disadvantages to using it?
+* Why is it called a Ternary expression, what does the word "Ternary" indicate?  
+condition ? expr1 : expr2 
+
+* What is `"use strict";`? what are the advantages and disadvantages to using it?  
+http://lucybain.com/blog/2014/js-use-strict/
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
+```javascript
+for(var i = 1; i <= 100; ++i) {
+  if (i%15 == 0) console.log('fizzbuzz');
+  else if (i%3 == 0) console.log('fizz');
+  else if (i%5 == 0) console.log('buzz');
+}
+```
+
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
 * Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
 * Explain what a single page app is and how to make one SEO-friendly.
