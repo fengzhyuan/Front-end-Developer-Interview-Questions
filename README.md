@@ -163,8 +163,14 @@ This file contains a number of front-end interview questions that can be used wh
       * httpRequest.responseText – returns the server response as a string of text
       * httpRequest.responseXML – returns the response as an XMLDocument object you can traverse using the JavaScript DOM functions
 
-* What are the advantages and disadvantages of using Ajax?
+* What are the advantages and disadvantages of using Ajax?  
+  http://stackoverflow.com/questions/2583223/what-are-the-advantages-and-disadvantages-of-making-ajax-calls-using-jquery
+
 * Explain how JSONP works (and how it's not really Ajax).
+  overcomes the Same-origin Policy; https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy  
+  http://stackoverflow.com/questions/5943630/basic-example-of-using-ajax-with-jsonp
+  JSONP create a `script` tag with src and send to server the url with `call_back` parameter, such that the server will return `call_back` with responsed data (as params), meaning the `call_back` will executed automatically.
+
 * Have you ever used JavaScript templating?
   * If so, what libraries have you used?
 * Explain "hoisting".
