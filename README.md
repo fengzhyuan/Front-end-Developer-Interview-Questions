@@ -342,11 +342,13 @@ function isUserTooYoung(id) {
 }
 ```
 * What are the pros and cons of using Promises instead of callbacks?
+promise: flexitibility; It all depends on what you need to do and how you need it done.  For code that relies on short local reactions to asynchronous events go with a callback.  For more complex interactions and data flows promises bring order to what could potentially be callback hell.
 * What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
+  may be difficult to debug and there might be performance concerns when the code has to be compiled and translated into Javascript.
 * What tools and techniques do you use debugging JavaScript code?
 * What language constructions do you use for iterating over object properties and array items?
 * Explain the difference between mutable and immutable objects.
-  * What is an example of an immutable object in JavaScript?
+  * What is an example of an immutable object in JavaScript? All types except objects define immutable values (primitive values)
   * What are the pros and cons of immutability?
   * How can you achieve immutability in your own code?
 * Explain the difference between synchronous and asynchronous functions.
