@@ -352,9 +352,18 @@ promise: flexitibility; It all depends on what you need to do and how you need i
   * What are the pros and cons of immutability?
   * How can you achieve immutability in your own code?
 * Explain the difference between synchronous and asynchronous functions.
-* What is event loop?
+* What is event loop?  
+The event loop got its name because of how it's usually implemented, which usually resembles:
+```javascript
+while(queue.waitForMessage()){
+  queue.processNextMessage();
+}
+```
+queue.waitForMessage waits synchronously for a message to arrive if there is none currently.
   * What is the difference between call stack and task queue?
-* Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
+* Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`  
+`function declaratoin` vs `function expression` https://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/
 
 #### Testing Questions:
 
