@@ -378,6 +378,17 @@ queue.waitForMessage waits synchronously for a message to arrive if there is non
 * What are some ways you may improve your website's scrolling performance?
 * Explain the difference between layout, painting and compositing.
 
+Layout:-
+
+Browser will determine how much space each element takes up and where to place it.
+
+Painting:-
+
+This is the process of filling in pixels. It involves drawing out elements.
+
+Compositing:-
+
+Browser draws element to the screen in the correct order so the page renders correctly.
 #### Network Questions:
 
 * Traditionally, why has it been better to serve site assets from multiple domains?
@@ -437,6 +448,33 @@ foo.push(2);
 var foo = {n: 1};
 var bar = foo;
 foo.x = foo = {n: 2};
+/*
+foo.x = foo = {n: 2};
+
+Here foo refers to {n:1} object before assignment i.e. before the statement is executed.
+
+The statement can be re-written as foo.x = (foo = {n:2});
+
+In object terms the above statement can be re-written as {n:1}.x = ( {n:1} = {n:2} );
+
+Since assignment happens from right to left only. So here we just have to keep a check that foo is referring to which object before execution starts.
+
+On solving the R.H.S: foo = {n:2}; Now foo is referring to {n:2};
+
+Coming back on the problem we are left with:
+
+foo.x = foo;
+
+Now foo.x on L.H.S is still {n:1}.x whereas foo on R.H.S is {n:2}.
+
+So after this statement gets executed {n:1} will become { n:1, x:{n:2} } with bar still referring to it. Where as foo will now be referring to {n:2}.
+
+So on execution foo.x gives undefined as there is only 1 value in foo which is {n:2}.
+
+But if you will try executing bar.x it will give {n:2}. Or if you will just execute bar the result will be
+
+Object {n: 1, x: Object}
+*/
 ```
 
 *Question: What does the following code print?*
